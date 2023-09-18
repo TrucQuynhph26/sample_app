@@ -1,24 +1,11 @@
 <p style="color: green"><%= notice %></p>
-<<<<<<< HEAD
-<h1>Products</h1>
-<button class="btn btn-success"><%= link_to "New product", new_product_path %></button>
-=======
-<<<<<<< HEAD
 
 <h1><%= t("product") %></h1>
 <button class="btn btn-success"><%= link_to t("new_product"), new_product_path %></button>
-=======
-<h1>Products</h1>
-<button class="btn btn-success"><%= link_to "New product", new_product_path %></button>
->>>>>>> 301d140 (Code chapter3_4_5)
->>>>>>> 38d56aa (chapter6)
 <div id="products">
   <table>
     <thead>
       <tr>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
         <th><%= t("name") %></th>
         <th colspan=3></th>
       </tr>
@@ -31,20 +18,3 @@
 </div>
 
 
-=======
->>>>>>> 38d56aa (chapter6)
-        <th>Name</th>
-        <th colspan=3></th>
-      </tr>
-      <tbody>
-          <%= render partial: "product", collection: @products %>
-          <%# <%= render (@products) || "No Products" %> 
-      </tbody>
-    </thead>
-  </table>
-<<<<<<< HEAD
-</div>
-=======
-</div>
->>>>>>> 301d140 (Code chapter3_4_5)
->>>>>>> 38d56aa (chapter6)
