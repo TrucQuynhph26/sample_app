@@ -11,11 +11,3 @@
 - Chạy lệnh để tạo database: rails db:create
 - Bật server: rails s
 Truy cập đường dẫn http://localhost:3000/ hiển thị Rails là thành công
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-TAN
->>>>>>> e01d5cb (chapter6)
-=======
->>>>>>> f3b5854 (Committing my changes before switching branches)

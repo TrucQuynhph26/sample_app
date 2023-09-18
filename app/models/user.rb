@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = Settings.users.EMAIL_REGEX
 
-  validates :name, presence: true,
+    validates :name, presence: true,
     length: {maximum: Settings.users.name_maximum}
-  validates :email, presence: true,
+    validates :email, presence: true,
     length: {maximum: Settings.users.email_maximum},
     format: {with: VALID_EMAIL_REGEX}, uniqueness: true
 
