@@ -1,15 +1,26 @@
-# config/locales/vi.yml
 vi:
-  title: "Học lập trình Ruby"
-  new_product: "Thêm mới sản phẩm"
-  sample_app: "ỨNG DỤNG MẪU"
-  product: "Sản phẩm"
+  title: "Ví dụ cơ bản về Rails"
   home: "Trang chủ"
   help: "Trợ giúp"
-  login: "Đăng nhập"
-  name: "Tên"
-  show: "Xem"
-  edit: "Sửa"
-  destroy: "Xóa"
-  vietnamese: "Tiếng Việt"
-  english: "Tiếng Anh"
+  log_in : "Đăng nhập"
+  log_out: "Đăng xuất"
+  sign_up : "Đăng ký"
+  create_my_account: "Tạo tài khoản"
+  confirmation: "Xác nhận mật khẩu"
+  notification: "Tạo tài khoản thành công"
+  not_found_user: "Không tìm thấy người dùng!"
+  error: "Lỗi!"
+  English: "Tiếng Anh"
+  Vietnamese: "Tiếng Việt"
+  sign_up_now: "Đăng ký ngay!"
+  account: "Tài khoản"
+  password: "Mật khẩu"
+
+  activerecord:
+    models:
+      user: "Người dùng"
+    attributes:
+      user:
+        name: "Tên"
+        email: "Email"
+        password: "Mật Khẩu"

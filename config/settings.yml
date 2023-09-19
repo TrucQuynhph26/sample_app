@@ -1,4 +1,5 @@
-users:
-  name_maximum: 50
-  email_maximum: 255
-  EMAIL_REGEX: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+# config/application.yml
+digits:
+  length_50: 50
+  length_255: 255
+  regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
