@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # app/controllers/application_controller.rb
   before_action :set_locale
-  private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
@@ -10,5 +9,3 @@ class ApplicationController < ActionController::Base
     {locale: I18n.locale}
   end
 end
-
-
