@@ -1,29 +1,81 @@
-# config/locales/vi.yml
 vi:
-  title: "Học lập trình Ruby"
-  new_product: "Thêm mới sản phẩm"
-  sample_app: "ỨNG DỤNG MẪU"
-  product: "Sản phẩm"
-  home: "Trang chủ"
-  help: "Trợ giúp"
-  login: "Đăng nhập"
-  name: "Tên"
-  show: "Xem"
-  edit: "Sửa"
-  destroy: "Xóa"
-  vietnamese: "Tiếng Việt"
-  english: "Tiếng Anh"
-  sign_up: "Đăng ký"
-  create_my_account: "Tạo mới tài khoản"
-  user_created_success: "Thêm mới User thành công"
-  the_form_contains: "Biểu mẫu chứa"
-  error: "lỗi"
-  log_in: "Đăng nhập"
-  log_out: "Đăng xuất"
-  invalid_email_password_combination: "Email, mật khẩu không chính xác"
-  profile: "Thông tin cá nhân"
-  new_user: "Người dùng mới ?"
-  sign_up_now: "Đăng ký ngay"
-  email: "Email"
-  password: "Mật khẩu"
-  remember_me: "Ghi nhớ mật khẩu trên máy tính của bạn"
+  static_pages:
+    about:
+      title: "Về chúng tôi"
+      description: <a href="https://www.railstutorial.org/"><em>Hướng dẫn về Ruby on Rails</em></a>, một phần của <a href="https://www.learnenough. com/">Tìm hiểu đủ</a> nhóm hướng dẫn, là một <a href="https://www.railstutorial.org/book">cuốn sách</a> và <a href="https://screencasts .railstutorial.org/">loạt video ghi lại màn hình</a> để hướng dẫn phát triển web với <a href="https://rubyonrails.org/">Ruby on Rails</a>. Đây là ứng dụng mẫu cho hướng dẫn.
+    contact:
+      title: "Liên hệ"
+      description: Liên hệ với Hướng dẫn về Ruby on Rails về ứng dụng mẫu tại <a href="https://www.railstutorial.org/contact">trang liên hệ</a>.
+    help:
+      title: "Trợ giúp"
+      description: Nhận trợ giúp về Hướng dẫn Ruby on Rails tại <a href="https://www.railstutorial.org/help">trang Trợ giúp hướng dẫn Rails</a>. Để nhận trợ giúp về ứng dụng mẫu này, hãy xem cuốn sách <a href="https://www.railstutorial.org/book"><em>Hướng dẫn về Ruby on Rails</em></a>.
+    home:
+      title: "Chào mừng bạn đến với Ứng dụng mẫu"
+      description: Đây là trang chủ của dự án mẫu sử dụng <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>.
+      sign_up: "Đăng ký ngay"
+      label: "Trang chủ"
+    layouts:
+      header:
+        title: "Hướng dẫn Sample App bằng Ruby on Rails"
+        login: "Đăng nhập"
+        all_users: "Tất cả người dùng"
+      footer:
+        description: <a href="https://www.railstutorial.org/">Hướng dẫn về Ruby on Rails</a> của <a href="https://www.michaelhartl.com/">Michael Hartl</a>
+        new: Tin tức
+    app_name: "Sample App"
+    full_title: "Hướng dẫn Sample App bằng Ruby on Rails"
+  sign_up:
+    title: "Đăng kí"
+    description: "Đăng kí cho người dùng mới"
+    label:
+      name: "Tên"
+      password: "Mật khẩu"
+      confirmation: "Xác nhận mật khẩu"
+    create:
+      success: "Chào mừng đến với ứng dụng mẫu"
+    submit: "Tạo tài khoản"
+  error:
+    form:
+      title: "Biểu mẫu chứa"
+      error: "Lỗi"
+  login:
+    title: "Đăng nhập"
+    description: "Trang đăng nhập"
+    label:
+      password: "Mật khẩu"
+    submit: "Đăng nhập"
+    new_user: "Người dùng mới?"
+    sign_up: "Đăng kí ngay!"
+    account:
+      title: "Tài khoản"
+      profile: "Thông tin cá nhân"
+      settings: "Cài đặt"
+      logout: "Đăng xuất"
+    fail: "Email hoặc mật khẩu không chính xác"
+    not_login: "Vui lòng đăng nhập"
+    remember_me: "Ghi nhớ đăng nhập"
+  user:
+    edit:
+      title: "chỉnh sửa người dùng"
+      header: "Cập nhật trang cá nhân của bạn"
+      image_change: "Thay đổi"
+      not_found: "Không tìm thấy người dùng"
+    index:
+      title: "Tất cả người dùng"
+    update:
+      success: "Cập nhật thành công"
+    destroy:
+      success: "Xóa thành công"
+      fail: "Xóa thất bại"
+      button: "Xóa"
+      confirm: "Bạn có chắc chắn muốn xóa"
+    not_correct_user: "Không đúng người dùng"
+    activation:
+      success: "Xác thực thành công"
+      fail: "Xác thực thất bại"
+      not_active_message: "Tài khoản chưa được kích hoạt, vui lòng kiểm tra email để kích hoạt tài khoản"
+      check_email_message:  "Hãy kiểm tra email để kích hoạt tài khoản của bạn"
+      mail_subject: "Kích hoạt tài khoản"
+      greeting: "Xin chào"
+      mail_body: "Chaò mừng đến với ứng dụng mẫu, hãy bấm vào link bên dưới để xác thực tài khoản"
+      button: "Xác thực"

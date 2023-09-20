@@ -1,22 +1,41 @@
-class SessionsController < ApplicationController
+class SessionController < ApplicationController
+  before_action :load_user_from_params, only: :create
+
   def new; end
 
   def create
-    # byebug
-    user = User.find_by(email: params.dig(:session, :email)&.downcase)
-    if user&.authenticate(params.dig(:session, :password))
-      # set user_id vao session
-      log_in user
-      params.dig(:session, :remember_me) == "1" ? remember(user) : forget(user)
-      redirect_to user
+    if @user&.authenticate(params.dig(:session, :password))
+      user_activated
     else
-      flash.now[:danger] = t "invalid_email_password_combination"
-      render :new, status: :unprocessable_entity
+      # Create an error message.
+      flash[:danger] = t("login.fail")
+      render "new", status: :unprocessable_entity
     end
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_path
+  end
+
+  private
+  def user_activated user
+    if @user.activated?
+      log_in user
+      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+      redirect_back_or user
+    else
+      message = t("user.activation.not_active_message")
+      flash[:warning] = message
+      redirect_to root_url
+    end
+  end
+
+  def load_user_from_params
+    @user = User.find_by email: params.dig(:session, :email)&.downcase
+    return unless @user.nil?
+
+    flash[:danger] = t("login.fail")
+    render "new", status: :unprocessable_entity
   end
 end
