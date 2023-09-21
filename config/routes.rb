@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  resources :products
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root "static_pages#home"
-  get "static_pages/home"
-  get "static_pages/help"
+  # Defines the root path route ("/")
+  # root "articles#index"
+  scope "(:locale)", locale: /en|vi/ do
+    root "static_pages#home"
+    get "/help", to: "static_pages#help"
+    get "/about", to: "static_pages#about"
+    get "/signup", to: "users#new"
+    get "/login", to: "sessions#new"
+    post "/login", to: "sessions#create"
+    delete "/logout", to: "sessions#destroy"
+    resources :users
+    resources :account_activations, only: :edit
+  end
 
-  get "/signup", to: "users#new"
-  post "/signup", to: "users#create"
-  resources :users
-
-  get "/login", to: "session#new"
-  post "/login", to: "session#create"
-  delete "/logout", to: "session#destroy"
 end

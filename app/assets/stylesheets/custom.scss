@@ -1,24 +1,28 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
-/* universal */
 body {
   padding-top: 60px;
 }
+
 section {
   overflow: auto;
 }
+
 textarea {
   resize: vertical;
 }
+
 .center {
   text-align: center;
 }
+
 .center h1 {
   margin-bottom: 10px;
 }
 
 /* header */
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -29,12 +33,71 @@ textarea {
   padding-top: 9px;
   font-weight: bold;
 }
+
 #logo:hover {
   color: #fff;
   text-decoration: none;
 }
 
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: #555;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+@media (max-width: 800px) {
+  footer {
+    small {
+      display: block;
+      float: none;
+      margin-bottom: 1em;
+    }
+    ul {
+      float: none;
+      padding: 0;
+      li {
+        float: none;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+}
+
 /* sidebar */
+
 aside {
   section.user_info {
     margin-top: 20px;
@@ -45,7 +108,8 @@ aside {
     &:first-child {
       border: 0;
       padding-top: 0;
-    }span {
+    }
+    span {
       display: block;
       margin-bottom: 3px;
       line-height: 1;
@@ -59,20 +123,25 @@ aside {
     }
   }
 }
+
 .gravatar {
   float: left;
   margin-right: 10px;
 }
+
 .gravatar_edit {
   margin-top: 15px;
 }
 
+
 /* forms */
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
 }
+
 input {
   height: auto !important;
 }
@@ -81,9 +150,10 @@ input {
   color: red;
   ul {
     color: red;
-    margin: 0 0 30px;
+    margin: 0 0 30px 0;
   }
 }
+
 .field_with_errors {
   @extend .has-error;
   .form-control {
@@ -91,24 +161,28 @@ input {
   }
 }
 
-.style_link_locale{
-  float:right
-}
-
 .checkbox {
+  margin-top: -10px;
   margin-bottom: 10px;
-  margin-top: 10px;
-
   span {
-    font-weight: normal;
     margin-left: 20px;
+    font-weight: normal;
   }
 }
 
 #session_remember_me {
-  margin-left: 0;
   width: auto;
+  margin-left: 0;
 }
+
+
+/* Dropdown menu */
+
+.dropdown-menu.active {
+  display: block;
+}
+
+/* Users index */
 
 .users {
   list-style: none;

@@ -1,7 +1,14 @@
-# config/application.yml
-digits:
-  length_50: 50
-  length_255: 255
-  length_6: 6
-  num_of_page: 10
-  regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+validate:
+  user:
+    email:
+      length:
+        max: 255
+      regex: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    name:
+      length:
+        max: 50
+    password:
+      length:
+        min: 6
+page_30: 30
+gravatar_size: 80

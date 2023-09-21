@@ -1,24 +1,16 @@
-<%= form_for @user do |f| %>
-    <%= render "shared/error_messages" %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation, t("confirmation") %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
-    </div>
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-    <% if @user_error %>
-      <p class="error"><%= @user_error %></p>
-    <% end %>
+<%= form_with(model: @user) do |f| %>
+    <%= render "shared/error_messages"%>
+    <%= f.label :name, t("sign_up.label.name") %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.label :password, t("sign_up.label.password") %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, t("sign_up.label.confirmation") %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit t("sign_up.submit"), class: "btn btn-primary" %>
 <% end %>
-  
