@@ -1,25 +1,20 @@
 class AccountActivationsController < ApplicationController
-  before_action :find_user, only: :edit
+  before_action :load_user, only: %i(edit)
 
   def edit
-    if @user && !@user.activated? && @user.authenticated?(:activation,
-                                                          params[:id])
-      @user.activate
-      log_in @user
-      flash[:success] = t "user.activation.success"
-      redirect_to @user
-    else
-      flash[:danger] = t "user.activation.fail"
-      redirect_to root_url
-    end
+    @user.activate
+    log_in @user
+    flash[:success] = t "mail.account_activated"
+    redirect_to @user
   end
 
   private
-  def find_user
+  def load_user
     @user = User.find_by email: params[:email]
-    return if @user
+    return if @user && !@user.activated && @user.authenticated?(:activation,
+                                                                params[:id])
 
-    flash[:danger] = t "user.edit.not_found"
-    redirect_to root_path
+    flash[:danger] = t "mail.invalid_activation_link"
+    redirect_to root_url
   end
 end
