@@ -1,5 +1,3 @@
-<% provide :title, t(".title") %>
-<h1><%= t(".title") %></h1>
-<p>
-    <%= t(".description_html") %>
-</p>
+<% provide(:title, t("help")) %>
+<h1><%= t("help") %></h1>
+<p><%= t("content_help").html_safe %></p>
