@@ -2,14 +2,22 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
 
   has_many :microposts, dependent: :destroy
+  has_many :active_relationships, class_name: Relationship,
+                                  foreign_key: follower_id,
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: Relationship,
+                                   foreign_key: followed_id,
+                                   dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
-  validates :name, presence: true, length: {maximum: Settings.degit.length_name}
+  validates :name, presence: true, length: { maximum: Settings.degit.length_name }
   validates :email, presence: true,
-                    length: {maximum: Settings.degit.length_email},
-                    format: {with: Settings.regex.email},
+                    length: { maximum: Settings.degit.length_email },
+                    format: { with: Settings.regex.email },
                     uniqueness: true
   validates :password, presence: true,
-                       length: {minimum: Settings.length_6},
+                       length: { minimum: Settings.length_6 },
                        allow_nil: true
 
   before_save :downcase_email
@@ -18,7 +26,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def feed
-    microposts
+    Micropost.relate_user(following_ids << id)
   end
 
   # Returns true if a password reset has expired.
@@ -28,7 +36,7 @@ class User < ApplicationRecord
 
   # Activates an account.
   def activate
-    update_columns activated: true, activated_at: Time.zone.now
+    update_columns(activated: true, activated_at: Time.zone.now)
   end
 
   # Sends activation email.
@@ -51,13 +59,9 @@ class User < ApplicationRecord
 
   class << self
     # Returns the hash digest of the given string.
-    def digest string
-      cost = if ActiveModel::SecurePassword.min_cost
-               BCrypt::Engine::MIN_COST
-             else
-               BCrypt::Engine.cost
-             end
-      BCrypt::Password.create string, cost:
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
     end
 
     # Returns a random token.
@@ -69,20 +73,32 @@ class User < ApplicationRecord
   # Remembers a user in the database for use in persistent sessions.
   def remember
     self.remember_token = User.new_token
-    update_attribute :remember_digest, User.digest(remember_token)
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 
   # Returns true if the given token matches the digest.
-  def authenticated? attribute, token
-    digest = send "#{attribute}_digest"
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
     return false unless digest
 
-    BCrypt::Password.new(digest).is_password? token
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   # Forgets a user.
   def forget
-    update_attribute :remember_digest, nil
+    update_attribute(:remember_digest, nil)
+  end
+
+  def follow(other_user)
+    following << other_user unless self == other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
   private
